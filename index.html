@@ -17,16 +17,26 @@
     })(window,document);
   </script>
   <script type="text/javascript">
+  window._pcq = window._pcq || [];
+_pcq.push(['APIReady', callbackOnSuccessFunction,callbackOnFailureFunction]); //will execute callback function when PushCrew API is ready
+
+function callbackOnSuccessFunction() {
     
-  if(pushcrew.isAPIReady) {
- if (console.log(pushcrew.subscriberId) === false){
+    if (console.log(pushcrew.subscriberId) === false){
    $('.inactive-push').attr("hidden",false);
  } else if (console.log(pushcrew.subscriberId) === -1){
    $('.blocked-push').attr("hidden",false);
- } else {
-   $('.active-push').attr("hidden",false);
- }
-  }
+ } 
+    //now api is ready
+}
+
+function callbackOnFailureFunction(values) {
+    
+     $('.active-push').attr("hidden",false);
+    console.log(values.reasons) //It will give you the array of reasons why PushCrew API could not get ready .For eg:- ["PRIVATE_BROWSING", "BROWSER_NOT_SUPPORTED"] etc.
+}
+      
+  
 </script>    
 </head>
 <body>  
