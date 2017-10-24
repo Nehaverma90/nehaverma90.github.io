@@ -16,27 +16,20 @@
       
     })(window,document);
   </script>
-  <script type="text/javascript">
-  window._pcq = window._pcq || [];
-_pcq.push(['APIReady', callbackOnSuccessFunction,callbackOnFailureFunction]); //will execute callback function when PushCrew API is ready
+  <script>window._pcq = window._pcq || [];
+_pcq.push(['subscriptionSuccessCallback',callbackFunctionOnSuccessfulSubscription]); //registers callback function to be called when user gets successfully subscribed
 
-function callbackOnSuccessFunction() {
-    
-    if (console.log(pushcrew.subscriberId) === false){
-   $('.inactive-push').attr("hidden",false);
- } else if (console.log(pushcrew.subscriberId) === -1){
-   $('.blocked-push').attr("hidden",false);
- } 
-    //now api is ready
-}
+function callbackFunctionOnSuccessfulSubscription(subscriberId, values) {
+    console.log('User got successfully subscribed.');
 
-function callbackOnFailureFunction(values) {
-    
-     $('.active-push').attr("hidden",false);
-    console.log(values.reasons) //It will give you the array of reasons why PushCrew API could not get ready .For eg:- ["PRIVATE_BROWSING", "BROWSER_NOT_SUPPORTED"] etc.
-}
-</script>   
-    
+    console.log(subscriberId); //will output the user's subscriberId
+
+    console.log(values.status); // SUBSCRIBED or ALREADYSUBSCRIBED
+
+    console.log(values.message) // 'User has subscribed to push notifications.' or 'User is already subscribed to push notifications.'
+
+    console.log('Now you may run code which should be executed once user gets successfully subscribed.');
+}</script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
