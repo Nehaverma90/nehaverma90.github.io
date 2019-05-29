@@ -67,7 +67,7 @@ color:#B1C6FC
 
 #menu
 {
-background-image:url(images/menu.png);
+background-image:url(/menu.png);
 background-repeat:no-repeat;
 width:940px;
 height:69px;
@@ -130,7 +130,7 @@ color:#7198E1;
 
 #menu a:hover{
 	color:#BAD1F3;
-	background: url(images/menuhov.jpg) no-repeat;
+	background: url(/menuhov.jpg) no-repeat;
 }
 
 #content p
